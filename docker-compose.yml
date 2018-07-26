@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  web:
+    image: wlatanowicz/gps-admin
+    restart: always
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    command: python ./manage.py runserver 0:8000
+
+  gps:
+    image: wlatanowicz/gps-admin
+    restart: always
+    ports:
+      - "4444:4444"
+    env_file:
+      - .env
+    command: python ./manage.py gpsserver
